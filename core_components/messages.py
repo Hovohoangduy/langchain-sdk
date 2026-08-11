@@ -15,14 +15,14 @@ system_msg = SystemMessage("You are a helpful assistant")
 human_msg = HumanMessage("Hello, how are you?")
 
 messages = [system_msg, human_msg]
-respone = model.invoke(messages)
-respone
+respose = model.invoke(messages)
+respose
 
 
 ###
 # Text prompts
-respone = model.invoke("Write a haiku about string")
-respone
+respose = model.invoke("Write a haiku about string")
+respose
 
 
 ###
@@ -35,8 +35,8 @@ messages = [
     AIMessage("Cherry blossoms bloom...")
 ]
 
-respone = model.invoke(messages)
-respone
+respose = model.invoke(messages)
+respose
 
 
 ###
@@ -46,8 +46,8 @@ messages = [
     {"role": "user", "content": "Write a haiku about spring"},
     {"role": "system", "content": "Cherry blossoms bloom..."}
 ]
-respone = model.invoke(messages)
-respone
+respose = model.invoke(messages)
+respose
 
 
 ###
@@ -58,8 +58,8 @@ messages = [
     system_msg,
     HumanMessage("How do I create a REST API")
 ]
-respone = model.invoke(messages)
-respone
+respose = model.invoke(messages)
+respose
 
 # Context details
 from langchain.messages import SystemMessage, HumanMessage
@@ -74,16 +74,16 @@ messages = [
     system_msg,
     HumanMessage("How do I create a REST API")
 ]
-respone = model.invoke(messages)
-respone
+respose = model.invoke(messages)
+respose
 
 
 ###
 # Human message
-respone = model.invoke([
+respose = model.invoke([
     HumanMessage("What is machine learning?")
 ])
-respone
+respose
 
 
 ###
@@ -100,8 +100,8 @@ messages = [
     ai_msg,
     HumanMessage("Great! What's 2+2?")
 ]
-respone = model.invoke(messages)
-respone
+respose = model.invoke(messages)
+respose
 
 
 ###
@@ -114,9 +114,9 @@ def get_weather(location: str) -> str:
     ...
 
 model_with_tools = model.bind_tools([get_weather])
-respone = model_with_tools.invoke("What's the weather in Paris?")
+respose = model_with_tools.invoke("What's the weather in Paris?")
 
-for tool_call in respone.tool_calls:
+for tool_call in respose.tool_calls:
     print(f"Tool: {tool_call['name']}")
     print(f"Args: {tool_call['args']}")
     print(f"ID: {tool_call['id']}")
@@ -149,8 +149,8 @@ messages = [
     tool_message,
 ]
 
-respone = model.invoke(messages)
-respone
+respose = model.invoke(messages)
+respose
 
 
 ###
@@ -166,8 +166,8 @@ human_message = HumanMessage(content=[
     {"type": "image_url", "image_url": {"url": "https://cdn.growthjockey.com/blogs/single-agent-system.png"}}
 ])
 
-respone = model.invoke([human_message])
-respone
+respose = model.invoke([human_message])
+respose
 
 
 ###
@@ -186,7 +186,7 @@ message = AIMessage(
         },
         {"type": "text", "text": "...", "id": "msg_abc123"},
     ],
-    respone_metadata={"model_provider": "openai"}
+    respose_metadata={"model_provider": "openai"}
 )
 message.content_blocks
 
@@ -201,5 +201,5 @@ message = {
     ]
 }
 
-respone = model.invoke([message])
-respone
+respose = model.invoke([message])
+respose

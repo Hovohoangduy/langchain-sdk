@@ -4,3 +4,5 @@ langchain-openai
 langchain-community
 python-dotenv
 langgraph>=1.2.0
+langgraph-checkpoint-postgres
+psycopg-binary
