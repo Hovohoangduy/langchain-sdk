@@ -151,3 +151,55 @@ messages = [
 
 respone = model.invoke(messages)
 respone
+
+
+###
+## Message content
+from langchain.messages import HumanMessage
+
+## String content
+# human_message = HumanMessage("What is this?")
+
+## Provider native-format
+human_message = HumanMessage(content=[
+    {"type": "text", "text": "What is this?"},
+    {"type": "image_url", "image_url": {"url": "https://cdn.growthjockey.com/blogs/single-agent-system.png"}}
+])
+
+respone = model.invoke([human_message])
+respone
+
+
+###
+## Standard content blocks
+from langchain.messages import AIMessage
+
+message = AIMessage(
+    content=[
+        {
+            "type": "reasoning",
+            "id": "rs_abc123",
+            "summary": [
+                {"type": "summary_text", "text": "summary 1"},
+                {"type": "summary_text", "text": "summary 2"}
+            ]
+        },
+        {"type": "text", "text": "...", "id": "msg_abc123"},
+    ],
+    respone_metadata={"model_provider": "openai"}
+)
+message.content_blocks
+
+
+###
+## Multi modal
+message = {
+    "role": "user",
+    "content": [
+        {"type": "text", "text": "Describe the content of this image."},
+        {"type": "image", "url": "https://images.viblo.asia/96522d2b-b7ef-46f8-b66c-bdf9c6ba6e52.png"}
+    ]
+}
+
+respone = model.invoke([message])
+respone
